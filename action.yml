@@ -7,6 +7,9 @@ inputs:
   tag:
     description: Image tag to scan.
     required: true
+  branch:
+    description: Current Branch
+    required: true
   fail_threshold:
     description: >
       Fail if any vulnerabilities equal to or over this severity level are detected. Valid values: critical, high, medium, low, informational.

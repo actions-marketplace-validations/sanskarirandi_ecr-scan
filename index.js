@@ -38,6 +38,7 @@ const getPaginatedResults = async (fn) => {
  * @param {AWS.ECR} ECR
  * @param {string} repository
  * @param {string} tag
+ * @param {string} branch
  * @returns {AWS.Request|AWS.AWSError|null} Results, Error or `null`.
  */
 const getFindings = async (ECR, repository, tag) => {
@@ -58,6 +59,9 @@ const deleteImage =  (ECR, repository, tag) => {
     imageIds: [
        {
       imageTag: tag
+     },
+     {
+      imageTag: branch
      }
     ], 
     repositoryName: repository
