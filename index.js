@@ -77,6 +77,7 @@ const deleteImage =  (ECR, repository, tag, branch) => {
  * @param {AWS.ECR} ECR
  * @param {string} repository
  * @param {string} tag
+ * @param {string} branch
  * @returns {AWS.ECR.ImageScanFinding[]|AWS.AWSError|null} Results, Error or `null`.
  */
 const getAllFindings = async (ECR, repository, tag) => {
