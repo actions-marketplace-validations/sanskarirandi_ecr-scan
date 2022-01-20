@@ -54,7 +54,7 @@ const getFindings = async (ECR, repository, tag) => {
     })
 }
 
-const deleteImage =  (ECR, repository, tag) => {
+const deleteImage =  (ECR, repository, tag, branch) => {
   let params = {
     imageIds: [
        {
@@ -274,7 +274,7 @@ const main = async () => {
             : /* failThreshold === 'critical' ? */ critical - ignoredCounts.critical
 
   if (numFailingVulns > 0) {
-    deleteImage(ECR, repository, tag)
+    deleteImage(ECR, repository, tag, branch)
     throw new Error(`Detected ${numFailingVulns} vulnerabilities with severity >= ${failThreshold} (the currently configured fail_threshold).`)
   }
 }
