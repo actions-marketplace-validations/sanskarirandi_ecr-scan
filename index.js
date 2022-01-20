@@ -159,6 +159,7 @@ const main = async () => {
   core.debug('Entering main')
   const repository = core.getInput('repository', { required: true })
   const tag = core.getInput('tag', { required: true })
+  const branch = core.getInput('branch', { required: true })
   const failThreshold = core.getInput('fail_threshold') || 'high'
   const ignoreList = parseIgnoreList(core.getInput('ignore_list'))
 
