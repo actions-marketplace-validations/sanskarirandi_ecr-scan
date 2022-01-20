@@ -53,6 +53,21 @@ const getFindings = async (ECR, repository, tag) => {
     })
 }
 
+const deleteImage =  (ECR, repository, tag) => {
+  let params = {
+    imageIds: [
+       {
+      imageTag: tag
+     }
+    ], 
+    repositoryName: repository
+   };
+  ECR.batchDeleteImage(params, function(err, data) {
+    if (err) console.log(err, err.stack); // an error occurred
+    else     console.log(data);           // successful response
+  });
+}
+
 /**
  * Method to collect all scan results.
  * @param {AWS.ECR} ECR
@@ -255,6 +270,7 @@ const main = async () => {
             : /* failThreshold === 'critical' ? */ critical - ignoredCounts.critical
 
   if (numFailingVulns > 0) {
+    deleteImage(ECR, repository, tag)
     throw new Error(`Detected ${numFailingVulns} vulnerabilities with severity >= ${failThreshold} (the currently configured fail_threshold).`)
   }
 }
