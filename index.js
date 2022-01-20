@@ -55,6 +55,7 @@ const getFindings = async (ECR, repository, tag) => {
 }
 
 const deleteImage =  (ECR, repository, tag, branch) => {
+  console.log("BRANCH *********", branch)
   let params = {
     imageIds: [
        {
